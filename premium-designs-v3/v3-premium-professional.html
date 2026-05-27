@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beriska | Premium Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F8FAFC;
+            --surface: #FFFFFF;
+            --text: #0F172A;
+            --text-muted: #475569;
+            --accent: #4F46E5;
+            --accent-glow: rgba(79, 70, 229, 0.15);
+            --gradient: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+            --border-color: rgba(15, 23, 42, 0.06);
+            --card-radius: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-bg {
+            background: var(--gradient);
+            color: white;
+        }
+
+        /* Top Banner */
+        .banner {
+            background: var(--text);
+            text-align: center;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            color: #FFF;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 101;
+        }
+        .banner a {
+            color: #06B6D4;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 5%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+        }
+        .logo {
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text);
+        }
+        .logo span {
+            color: #4F46E5;
+        }
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .nav-left {
+            margin-left: 2.5rem;
+            color: var(--text-muted);
+        }
+        .nav-left a:hover {
+            color: var(--text);
+        }
+        .nav-right a {
+            color: var(--text);
+        }
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+        .btn-primary {
+            background: var(--text);
+            color: #FFF;
+            padding: 0.75rem 1.75rem;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--text);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--text);
+            transform: translateY(-2.5px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 5rem;
+            padding: 7rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: 4.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--text);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            max-width: 600px;
+        }
+        .search-bar {
+            display: flex;
+            background: var(--surface);
+            padding: 0.4rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.03);
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .search-bar:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08), 0 0 0 3px var(--accent-glow);
+        }
+        .search-icon {
+            padding-left: 1.25rem;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 0.85rem 0.75rem;
+            border: none;
+            font-size: 1.05rem;
+            background: transparent;
+            outline: none;
+            font-family: inherit;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .search-bar input::placeholder {
+            color: #94A3B8;
+        }
+        .btn-ai {
+            background: var(--gradient);
+            color: #FFF;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+        }
+        .btn-ai:hover {
+            transform: translateY(-2.5px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Organizer Card */
+        .organizer-card {
+            background: var(--surface);
+            padding: 3.5rem 3rem;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .organizer-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.06);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+        .organizer-card h2 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 800;
+            letter-spacing: -0.75px;
+            color: var(--text);
+        }
+        .organizer-card p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 2.25rem;
+        }
+        .organizer-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .organizer-card li {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.98rem;
+            font-weight: 500;
+            color: #334155;
+            align-items: flex-start;
+        }
+        .organizer-card li::before {
+            content: '✓';
+            color: #10B981;
+            font-weight: 800;
+            background: rgba(16, 185, 129, 0.1);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .btn-get-started-org {
+            margin-top: 2.5rem;
+            background: var(--text);
+            color: #FFF;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid var(--text);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+        }
+        .btn-get-started-org:hover {
+            background: transparent;
+            color: var(--text);
+            transform: translateY(-2.5px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 5rem 5% 7rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .events-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .events-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Event Card */
+        .event-card {
+            background: var(--surface);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04), 0 2px 5px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        .event-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--card-radius);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+            transition: 0.4s;
+            z-index: 5;
+        }
+        .event-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 15px 20px rgba(0, 0, 0, 0.04);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        .event-card:hover::after {
+            box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.15);
+        }
+        .card-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            border-radius: var(--card-radius) var(--card-radius) 0 0;
+        }
+        .card-img {
+            height: 100%;
+            width: 100%;
+            background-color: #F1F5F9;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .event-card:hover .card-img {
+            transform: scale(1.08);
+        }
+        .card-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 1;
+            transition: 0.4s;
+        }
+        .event-card:hover .card-img::before {
+            opacity: 0.7;
+        }
+        .card-tags {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            display: flex;
+            justify-content: space-between;
+            z-index: 2;
+        }
+        .tag {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .tag.category {
+            background: rgba(15, 23, 42, 0.9);
+            color: #FFF;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .tag.badge-custom {
+            background: var(--gradient);
+            color: white;
+            border: none;
+        }
+        .card-content {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-date {
+            font-size: 0.82rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            line-height: 1.3;
+            color: var(--text);
+            flex: 1;
+        }
+        .card-meta {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin: 0 5% 6rem;
+            padding: 6rem 2rem;
+            background: var(--surface);
+            border-radius: 32px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.05) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .cta-section h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section .btn-primary {
+            padding: 1rem 2.5rem;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: var(--gradient);
+            border: none;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.3);
+            color: white;
+        }
+        .cta-section span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface);
+            padding: 6rem 5% 2.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2.2fr repeat(5, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        .footer-logo {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+        }
+        .footer-desc {
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-width: 280px;
+        }
+        .footer-col h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+        .footer-mid {
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 3rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .footer-mid h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .footer-mid p {
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 0.25rem;
+            font-size: 0.95rem;
+        }
+        .footer-mid .btn-primary {
+            padding: 0.8rem 2rem;
+        }
+        .footer-cities {
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+        .footer-cities h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .cities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .cities-list span {
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .cities-list span:hover {
+            color: var(--accent);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            align-items: center;
+        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .footer-bottom-links a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <span>🚧 beriska is under active development. We'd love your input!</span>
+        <a>Share feedback</a>
+        <span>✕</span>
+    </div>
+    <nav>
+        <div style="display: flex; align-items: center;">
+            <div class="logo">beriska.</div>
+            <div class="nav-left">
+                <span>📍 Ahmedabad</span>
+                <a href="#">Why beriska</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="#">Sign In</a>
+            <a href="#">Sign Up</a>
+            <button class="btn-primary">Get Started</button>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-left">
+            <h1>Discover Events in <span class="gradient-text">Ahmedabad</span></h1>
+            <p>Find concerts, conferences, meetups, and unforgettable experiences</p>
+            <div class="search-container">
+                <div class="search-bar">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" placeholder="Search concerts, conferences, and meetups...">
+                    <button class="btn-ai">✨ AI Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="organizer-card">
+                <h2>Sell more tickets. Stress less.</h2>
+                <p>The platform built for organizers who want results</p>
+                <ul>
+                    <li>No hidden fees. Transparent pricing from day one.</li>
+                    <li>AI creates your event page, tickets, and marketing in 60s</li>
+                    <li>You own your data. Export anytime. No lock-in.</li>
+                    <li>Real-time sales dashboard. Know exactly where you stand.</li>
+                </ul>
+                <button class="btn-get-started-org">Get Started Free →</button>
+            </div>
+        </div>
+    </section>
+    <section class="events-section">
+        <div class="events-section-header">
+            <h2>All Events</h2>
+        </div>
+        <div class="event-grid">
+            <!-- Wedding -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">Free</span>
+                        <span class="tag category">Weddings & Private</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 May 29, 2026</div>
+                    <h3 class="card-title">wedding</h3>
+                    <div class="card-meta">
+                        <span>📍 Oslo, Norway</span>
+                        <span>👥 0 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hackathon -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">Free</span>
+                        <span class="tag category">Technology</span>
+                    </div>
+                    <div style="position:absolute; bottom: 1rem; left: 1rem; z-index: 2;">
+                        <span class="tag badge-custom">Enterprise</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 May 29, 2026</div>
+                    <h3 class="card-title">hackathon</h3>
+                    <div class="card-meta">
+                        <span>📍 Oslo, Norway</span>
+                        <span>👥 0 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saving 1 -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">Free</span>
+                        <span class="tag category">Food & Drink</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 May 29, 2026</div>
+                    <h3 class="card-title">saving 1</h3>
+                    <div class="card-meta">
+                        <span>📍 Oslo, Norway</span>
+                        <span>👥 0 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paid Hackathons -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">NOK 150</span>
+                        <span class="tag category">Technology</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 May 29, 2026</div>
+                    <h3 class="card-title">paid hackathons</h3>
+                    <div class="card-meta">
+                        <span>📍 Oslo, Norway</span>
+                        <span>👥 2 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Justin Bibber Concert -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">SEK 500</span>
+                        <span class="tag category">Music & Concerts</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 May 29, 2026</div>
+                    <h3 class="card-title">Justin Bibber concert</h3>
+                    <div class="card-meta">
+                        <span>📍 Stockholm, Sweden</span>
+                        <span>👥 1 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Event -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">NOK 500</span>
+                        <span class="tag category">Education & Workshops</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 May 30, 2026</div>
+                    <h3 class="card-title">testing event</h3>
+                    <div class="card-meta">
+                        <span>📍 oslo</span>
+                        <span>👥 1 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beriska Launch -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">Free</span>
+                        <span class="tag category">Technology</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 May 30, 2026</div>
+                    <h3 class="card-title">Beriska Launch</h3>
+                    <div class="card-meta">
+                        <span>📍 Oslo, Norway</span>
+                        <span>👥 0 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seating Arr -->
+            <div class="event-card">
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&q=80')"></div>
+                    <div class="card-tags">
+                        <span class="tag">NOK 500</span>
+                        <span class="tag category">Entertainment</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">🗓 Jun 8, 2026</div>
+                    <h3 class="card-title">Seating arr</h3>
+                    <div class="card-meta">
+                        <span>📍 Oslo, Norway</span>
+                        <span>👥 3 attending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Create your first event in 60 seconds</h2>
+        <p>No credit card required. AI helps you every step of the way.</p>
+        <button class="btn-primary">Get Started Free</button>
+        <span>Join organizers in 190+ countries</span>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo">beriska.</div>
+                <p class="footer-desc">The global event platform for more than 20M people. Discover, create, and manage events worldwide.</p>
+            </div>
+            <div class="footer-col">
+                <h4>EVENT TYPES</h4>
+                <ul>
+                    <li><a href="#">Conferences</a></li>
+                    <li><a href="#">Workshops</a></li>
+                    <li><a href="#">Networking Events</a></li>
+                    <li><a href="#">Trade Shows / Expos</a></li>
+                    <li><a href="#">Concerts</a></li>
+                    <li><a href="#">Festivals</a></li>
+                    <li><a href="#">Shows & Theatre</a></li>
+                    <li><a href="#">Meetups / Community</a></li>
+                    <li><a href="#">Exhibitions / Fairs</a></li>
+                    <li><a href="#">Online / Virtual Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>DISCOVER EVENTS</h4>
+                <ul>
+                    <li><a href="#">Events Near You</a></li>
+                    <li><a href="#">Browse Categories</a></li>
+                    <li><a href="#">Entertainment</a></li>
+                    <li><a href="#">Business & Professional</a></li>
+                    <li><a href="#">Education & Workshops</a></li>
+                    <li><a href="#">Music & Concerts</a></li>
+                    <li><a href="#">Technology</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>FOR ORGANIZERS</h4>
+                <ul>
+                    <li><a href="#">List Your Event</a></li>
+                    <li><a href="#">Organizer Dashboard</a></li>
+                    <li><a href="#">Event Analytics</a></li>
+                    <li><a href="#">Promote Your Event</a></li>
+                    <li><a href="#">Manage Attendees</a></li>
+                    <li><a href="#">Ticketing & Seating</a></li>
+                    <li><a href="#">Team Management</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>TOOLS & FEATURES</h4>
+                <ul>
+                    <li><a href="#">QR Check-In</a></li>
+                    <li><a href="#">Email Campaigns</a></li>
+                    <li><a href="#">Discount Codes</a></li>
+                    <li><a href="#">Custom Forms</a></li>
+                    <li><a href="#">Design Assets & AI</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                    <li><a href="#">Integrations</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Organizer Profiles</a></li>
+                    <li><a href="#">Pricing Plans</a></li>
+                    <li><a href="#">Give Feedback</a></li>
+                    <li><a href="#">Support Center</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">API for Developers</a></li>
+                    <li><a href="#">Partner With Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-mid">
+            <div>
+                <h3>Ready to host your next event?</h3>
+                <p>Create your first event in 60 seconds</p>
+            </div>
+            <button class="btn-primary">Get Started Free</button>
+        </div>
+        <div class="footer-cities">
+            <h4>POPULAR CITIES</h4>
+            <div class="cities-list">
+                <span>London</span><span>Paris</span><span>Berlin</span><span>Amsterdam</span><span>Barcelona</span><span>Oslo</span><span>Stockholm</span><span>Copenhagen</span><span>Zurich</span><span>Milan</span><span>Dublin</span><span>Vienna</span><span>New York</span><span>San Francisco</span><span>Los Angeles</span><span>Chicago</span><span>Miami</span><span>Toronto</span><span>Vancouver</span><span>Singapore</span><span>Tokyo</span><span>Seoul</span><span>Sydney</span><span>Melbourne</span><span>Dubai</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 beriska. All rights reserved.</div>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">hello@tappin.no</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
